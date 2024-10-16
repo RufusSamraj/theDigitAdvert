@@ -27,6 +27,52 @@
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
 
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script type="text/javascript">
+    // Initialize EmailJS with your user ID
+    (function(){
+      emailjs.init({
+        publicKey: "5FTx7-6xlEf7hjZ8r",
+      });
+   })();
+
+    function sendEmail(event) {
+        event.preventDefault();  // Prevent default form submission
+
+        // Show loading indicator
+        document.querySelector('.loading').style.display = 'block';
+
+        // Get form data
+        var formData = {
+            name: document.querySelector("input[name='name']").value,
+            email: document.querySelector("input[name='email']").value,
+            subject: document.querySelector("input[name='subject']").value,
+            message: document.querySelector("textarea[name='message']").value
+        };
+
+        // Send email using EmailJS
+        emailjs.send("service_ke7anlh", "template_h3km6ke", formData)
+        .then(function(response) {
+            console.log('SUCCESS!', response.status, response.text);
+            
+            // Hide loading and show success message
+            document.querySelector('.loading').style.display = 'none';
+            document.querySelector('.sent-message').style.display = 'block';
+            document.querySelector('.error-message').style.display = 'none';
+
+            // Optionally clear the form
+            document.querySelector('form.js-email-form').reset();
+        }, function(error) {
+            console.log('FAILED...', error);
+            
+            // Hide loading and show error message
+            document.querySelector('.loading').style.display = 'none';
+            document.querySelector('.sent-message').style.display = 'none';
+            document.querySelector('.error-message').style.display = 'block';
+        });
+    }
+</script>
+
 </head>
 
 <body class="index-page">
@@ -77,31 +123,31 @@
           <div class="col-xl-2 col-md-4" data-aos="fade-up" data-aos-delay="300">
             <div class="icon-box">
               <i class="bi bi-code-square"></i>
-              <h3><a href="">Web Design and Development</a></h3>
+              <h3><a>Web Design and Development</a></h3>
             </div>
           </div>
           <div class="col-xl-2 col-md-4" data-aos="fade-up" data-aos-delay="400">
             <div class="icon-box">
               <i class="bi bi-postage-heart"></i>
-              <h3><a href="">Poster Design</a></h3>
+              <h3><a>Poster Design</a></h3>
             </div>
           </div>
           <div class="col-xl-2 col-md-4" data-aos="fade-up" data-aos-delay="500">
             <div class="icon-box">
               <i class="bi bi-search"></i>
-              <h3><a href="">SEO Services</a></h3>
+              <h3><a>SEO Services</a></h3>
             </div>
           </div>
           <div class="col-xl-2 col-md-4" data-aos="fade-up" data-aos-delay="600">
             <div class="icon-box">
               <i class="bi bi-brush"></i>
-              <h3><a href="">Vector Art and Digital invitaions</a></h3>
+              <h3><a>Vector Art and Digital invitaions</a></h3>
             </div>
           </div>
           <div class="col-xl-2 col-md-4" data-aos="fade-up" data-aos-delay="700">
             <div class="icon-box">
               <i class="bi bi-phone"></i>
-              <h3><a href="">Mobile App Development</a></h3>
+              <h3><a>Mobile App Development</a></h3>
             </div>
           </div>
         </div>
@@ -219,9 +265,9 @@
               <div class="icon">
                 <i class="bi bi-code-slash"></i>
               </div>
-              <a href="service-details.html" class="stretched-link">
+              <!-- <a href="" class="stretched-link"> -->
                 <h3>Website Design and Development</h3>
-              </a>
+              <!-- </a> -->
               <p>Creating responsive, user-friendly websites tailored to your business needs with the latest technologies and best practices.</p> <!-- Updated paragraph -->
             </div>
           </div><!-- End Service Item -->
@@ -231,48 +277,48 @@
               <div class="icon">
                 <i class="bi bi-image"></i> 
               </div>
-              <a href="service-details.html" class="stretched-link">
+              <!-- <a href="" class="stretched-link"> -->
                 <h3>Poster Design</h3>
-              </a>
+              <!-- </a> -->
               <p>Crafting visually stunning posters that capture attention and convey your message effectively for both print and digital formats.</p> <!-- Updated paragraph -->
+            </div>
+          </div><!-- End Service Item -->
+          
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="250">
+            <div class="service-item position-relative">
+              <div class="icon">
+                <i class="bi bi-bar-chart-line"></i>
+              </div>
+              <!-- <a href="" class="stretched-link"> -->
+                <h3>SEO Services</h3>
+              <!-- </a> -->
+              <p>Improving your website's visibility and ranking in search engines through effective strategies and optimization techniques.</p> <!-- Updated paragraph -->
             </div>
           </div><!-- End Service Item -->
           
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
             <div class="service-item position-relative">
               <div class="icon">
-                <i class="bi bi-bar-chart-line"></i>
-              </div>
-              <a href="service-details.html" class="stretched-link">
-                <h3>SEO Services</h3>
-              </a>
-              <p>Improving your website's visibility and ranking in search engines through effective strategies and optimization techniques.</p> <!-- Updated paragraph -->
-            </div>
-          </div><!-- End Service Item -->
-          
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-            <div class="service-item position-relative">
-              <div class="icon">
                 <i class="bi bi-palette"></i>
               </div>
-              <a href="service-details.html" class="stretched-link">
+              <!-- <a href="" class="stretched-link"> -->
                 <h3>Vector Art and Digital Invitations</h3>
-              </a>
+              <!-- </a> -->
               <p>Creating unique vector art and custom digital invitations for any occasion, ensuring high-quality design and personalization.</p> <!-- Updated paragraph -->
-              <a href="service-details.html" class="stretched-link"></a>
+              <!-- <a href="" class="stretched-link"></a> -->
             </div>
           </div><!-- End Service Item -->
           
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="350">
             <div class="service-item position-relative">
               <div class="icon">
                 <i class="bi bi-phone"></i> 
               </div>
-              <a href="service-details.html" class="stretched-link">
+              <!-- <a href="" class="stretched-link"> -->
                 <h3>Mobile App Development</h3>
-              </a>
+              <!-- </a> -->
               <p>Developing intuitive and scalable mobile apps to meet the needs of your business and deliver an exceptional user experience.</p> <!-- Updated paragraph -->
-              <a href="service-details.html" class="stretched-link"></a>
+              <!-- <a href="" class="stretched-link"></a> -->
             </div>
           </div><!-- End Service Item -->          
 
@@ -286,7 +332,7 @@
     <section id="contact" class="contact section">
 
       <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
+      <div class="container section-title" data-aos="fade-up" data-aos-delay="100">
         <h2>Contact</h2>
         <p>Contact Us</p>
       </div><!-- End Section Title -->
@@ -297,7 +343,7 @@
 
           <div class="col-lg-4">
 
-            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
+            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="100">
               <i class="bi bi-telephone flex-shrink-0"></i>
               <div>
                 <h3>Call Us</h3>
@@ -305,7 +351,7 @@
               </div>
             </div><!-- End Info Item -->
 
-            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="500">
+            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="100">
               <i class="bi bi-envelope flex-shrink-0"></i>
               <div>
                 <h3>Email Us</h3>
@@ -316,7 +362,7 @@
           </div>
 
           <div class="col-lg-8">
-            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+            <form action="forms/contact.js" method="post" class="js-email-form" onsubmit="sendEmail(event)">
               <div class="row gy-4">
 
                 <div class="col-md-6">
@@ -389,16 +435,16 @@
             </ul>
           </div>
 
-          <div class="col-lg-4 col-md-12 footer-newsletter">
+          <!-- <div class="col-lg-4 col-md-12 footer-newsletter">
             <h4>Our Newsletter</h4>
             <p>Subscribe to our newsletter and receive the latest news about our products and services!</p>
-            <form action="forms/newsletter.php" method="post" class="php-email-form">
+            <form action="forms/newsletter.js" method="post" class="js-email-form">
               <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="Subscribe"></div>
               <div class="loading">Loading</div>
               <div class="error-message"></div>
               <div class="sent-message">Your subscription request has been sent. Thank you!</div>
             </form>
-          </div>
+          </div> -->
 
         </div>
       </div>
@@ -426,7 +472,7 @@
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/js-email-form/validate.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
